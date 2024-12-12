@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+service MiniTwitter {
+  rpc sendMessage (MessageRequest) returns (Response);
+  rpc getMessages (GetMessagesRequest) returns (MessagesResponse);
+}
+
+message MessageRequest {
+  string name = 1;         // Dodano nazwę użytkownika
+  string content = 2;      // Treść wiadomości
+}
+
+message GetMessagesRequest {
+  int32 count = 1;         // Liczba wiadomości do pobrania
+}
+
+message Response {
+  string status = 1;       // Status odpowiedzi
+}
+
+message MessagesResponse {
+  repeated string messages = 1;  // Lista wiadomości
+}

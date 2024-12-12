@@ -24,7 +24,7 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x11minitwitter.proto\"!\n\x0eMessageRequest\x12\x0f\n\x07\x63ontent\x18\x01 \x01(\t\"#\n\x12GetMessagesRequest\x12\r\n\x05\x63ount\x18\x01 \x01(\x05\"\x1a\n\x08Response\x12\x0e\n\x06status\x18\x01 \x01(\t\"$\n\x10MessagesResponse\x12\x10\n\x08messages\x18\x01 \x03(\t2o\n\x0bMiniTwitter\x12)\n\x0bsendMessage\x12\x0f.MessageRequest\x1a\t.Response\x12\x35\n\x0bgetMessages\x12\x13.GetMessagesRequest\x1a\x11.MessagesResponseb\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x11minitwitter.proto\"/\n\x0eMessageRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x0f\n\x07\x63ontent\x18\x02 \x01(\t\"#\n\x12GetMessagesRequest\x12\r\n\x05\x63ount\x18\x01 \x01(\x05\"\x1a\n\x08Response\x12\x0e\n\x06status\x18\x01 \x01(\t\"$\n\x10MessagesResponse\x12\x10\n\x08messages\x18\x01 \x03(\t2o\n\x0bMiniTwitter\x12)\n\x0bsendMessage\x12\x0f.MessageRequest\x1a\t.Response\x12\x35\n\x0bgetMessages\x12\x13.GetMessagesRequest\x1a\x11.MessagesResponseb\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -32,13 +32,13 @@ _builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'minitwitter_pb2', _globals)
 if not _descriptor._USE_C_DESCRIPTORS:
   DESCRIPTOR._loaded_options = None
   _globals['_MESSAGEREQUEST']._serialized_start=21
-  _globals['_MESSAGEREQUEST']._serialized_end=54
-  _globals['_GETMESSAGESREQUEST']._serialized_start=56
-  _globals['_GETMESSAGESREQUEST']._serialized_end=91
-  _globals['_RESPONSE']._serialized_start=93
-  _globals['_RESPONSE']._serialized_end=119
-  _globals['_MESSAGESRESPONSE']._serialized_start=121
-  _globals['_MESSAGESRESPONSE']._serialized_end=157
-  _globals['_MINITWITTER']._serialized_start=159
-  _globals['_MINITWITTER']._serialized_end=270
+  _globals['_MESSAGEREQUEST']._serialized_end=68
+  _globals['_GETMESSAGESREQUEST']._serialized_start=70
+  _globals['_GETMESSAGESREQUEST']._serialized_end=105
+  _globals['_RESPONSE']._serialized_start=107
+  _globals['_RESPONSE']._serialized_end=133
+  _globals['_MESSAGESRESPONSE']._serialized_start=135
+  _globals['_MESSAGESRESPONSE']._serialized_end=171
+  _globals['_MINITWITTER']._serialized_start=173
+  _globals['_MINITWITTER']._serialized_end=284
 # @@protoc_insertion_point(module_scope)

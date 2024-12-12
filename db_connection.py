@@ -7,4 +7,5 @@ def get_db_connection():
         'DATABASE=MiniTwitter;'
         'Trusted_Connection=yes;'
     )
+    print("Database connection successful.")
     return conn

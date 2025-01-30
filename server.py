@@ -69,15 +69,15 @@ class MiniTwitterServicer(minitwitter_pb2_grpc.MiniTwitterServicer):
         conn = get_db_connection()
         cursor = conn.cursor()
 
-        # Pobieramy najnowsze 'n' wiadomości wraz z nazwą użytkownika
+        # Pobieramy najnowsze 'n' wiadomości z datą i godziną
         cursor.execute("""
-                SELECT TOP (?) Users.Name, Messages.MessageText
-                FROM Messages
-                JOIN Users ON Messages.UserID = Users.UserID
-                ORDER BY Messages.Timestamp DESC
-            """, request.count)
+            SELECT TOP (?) Users.Name, Messages.MessageText, FORMAT(Messages.Timestamp, 'yyyy-MM-dd HH:mm:ss')
+            FROM Messages
+            JOIN Users ON Messages.UserID = Users.UserID
+            ORDER BY Messages.Timestamp DESC
+        """, request.count)
 
-        messages = [f"{row[0]}: {row[1]}" for row in cursor.fetchall()]
+        messages = [f"{row[0]} ({row[2]}): {row[1]}" for row in cursor.fetchall()]
         conn.close()
 
         return minitwitter_pb2.MessagesResponse(messages=messages)

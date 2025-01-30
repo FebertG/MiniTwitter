@@ -21,13 +21,16 @@ def send_message(user_name, content):
         response = stub.sendMessage(minitwitter_pb2.MessageRequest(name=user_name, content=content))
         print("Server response:", response.status)
 
+
 def get_messages(count):
     with grpc.insecure_channel('localhost:50052') as channel:
         stub = minitwitter_pb2_grpc.MiniTwitterStub(channel)
         response = stub.getMessages(minitwitter_pb2.GetMessagesRequest(count=count))
-        print("Messages:")
+
+        print("\n--- Najnowsze wiadomości ---")
         for message in response.messages:
             print(f"- {message}")
+
 
 def main():
     user_logged_in = False

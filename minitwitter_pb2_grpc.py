@@ -5,7 +5,7 @@ import warnings
 
 import minitwitter_pb2 as minitwitter__pb2
 
-GRPC_GENERATED_VERSION = '1.68.1'
+GRPC_GENERATED_VERSION = '1.70.0'
 GRPC_VERSION = grpc.__version__
 _version_not_supported = False
 
@@ -34,6 +34,16 @@ class MiniTwitterStub(object):
         Args:
             channel: A grpc.Channel.
         """
+        self.registerUser = channel.unary_unary(
+                '/MiniTwitter/registerUser',
+                request_serializer=minitwitter__pb2.RegisterUserRequest.SerializeToString,
+                response_deserializer=minitwitter__pb2.Response.FromString,
+                _registered_method=True)
+        self.loginUser = channel.unary_unary(
+                '/MiniTwitter/loginUser',
+                request_serializer=minitwitter__pb2.LoginUserRequest.SerializeToString,
+                response_deserializer=minitwitter__pb2.Response.FromString,
+                _registered_method=True)
         self.sendMessage = channel.unary_unary(
                 '/MiniTwitter/sendMessage',
                 request_serializer=minitwitter__pb2.MessageRequest.SerializeToString,
@@ -48,6 +58,18 @@ class MiniTwitterStub(object):
 
 class MiniTwitterServicer(object):
     """Missing associated documentation comment in .proto file."""
+
+    def registerUser(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def loginUser(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
 
     def sendMessage(self, request, context):
         """Missing associated documentation comment in .proto file."""
@@ -64,6 +86,16 @@ class MiniTwitterServicer(object):
 
 def add_MiniTwitterServicer_to_server(servicer, server):
     rpc_method_handlers = {
+            'registerUser': grpc.unary_unary_rpc_method_handler(
+                    servicer.registerUser,
+                    request_deserializer=minitwitter__pb2.RegisterUserRequest.FromString,
+                    response_serializer=minitwitter__pb2.Response.SerializeToString,
+            ),
+            'loginUser': grpc.unary_unary_rpc_method_handler(
+                    servicer.loginUser,
+                    request_deserializer=minitwitter__pb2.LoginUserRequest.FromString,
+                    response_serializer=minitwitter__pb2.Response.SerializeToString,
+            ),
             'sendMessage': grpc.unary_unary_rpc_method_handler(
                     servicer.sendMessage,
                     request_deserializer=minitwitter__pb2.MessageRequest.FromString,
@@ -84,6 +116,60 @@ def add_MiniTwitterServicer_to_server(servicer, server):
  # This class is part of an EXPERIMENTAL API.
 class MiniTwitter(object):
     """Missing associated documentation comment in .proto file."""
+
+    @staticmethod
+    def registerUser(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/MiniTwitter/registerUser',
+            minitwitter__pb2.RegisterUserRequest.SerializeToString,
+            minitwitter__pb2.Response.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def loginUser(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/MiniTwitter/loginUser',
+            minitwitter__pb2.LoginUserRequest.SerializeToString,
+            minitwitter__pb2.Response.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
 
     @staticmethod
     def sendMessage(request,
